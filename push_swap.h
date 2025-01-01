@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:34:38 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/01 13:23:03 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/01 15:43:29 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,14 @@ char	*join_av(int ac, char const **av);
 char	*ft_strdup(const char *src);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		is_number(char *str);
-int		ft_isdigit(int c);
 int		check_all_numbers(char **res);
-char	**check_number(int ac, char const **av);
+int		*check_number(int ac, char const **av);
+int		*convert_to_integers(char **res);
+int		ft_atoi(const char *str);
+int 	setup_stack(t_stack *stack, int *numbers, int count);
+void 	free_stack(t_stack *stack);
+int 	push_stack(t_stack *stack, int value);
+int		init_stack(t_stack *stack, int capacity);
 #endif
 
 //  check if sorted

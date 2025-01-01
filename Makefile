@@ -1,9 +1,9 @@
-SRCS = push_swap.c push_swap1.c push_swap2.c ft_printf_utils.c \
-		ft_printf.c ft_split.c ft_strjoin.c 
+SRCS = push_swap.c push_swap1.c push_swap2.c push_swap3.c ft_printf_utils.c \
+		ft_printf.c ft_split.c ft_strjoin.c ft_strdup.c ft_atoi.c
 
-SRCSB = 
+#SRCSB = 
 OBJS = ${SRCS:.c=.o}
-OBJSB = ${SRCSB:.c=.o}
+#OBJSB = ${SRCSB:.c=.o}
 NAME = push_swap
 CC = cc
 RM = rm -f
@@ -12,13 +12,12 @@ CFLAGS = -Wall -Wextra -Werror
 ${NAME}: ${OBJS}
 	$(CC) $(CFLAGS) ${OBJS} -o ${NAME}
 
-bonus: ${OBJSB}
-	$(CC) $(CFLAGS) ${OBJSB} -o ${NAME}
+#bonus: ${OBJSB} $(CC) $(CFLAGS) ${OBJSB} -o ${NAME}
  
 all: ${NAME}
 
 clean:
-	${RM} ${OBJS} ${OBJSB}
+	${RM} ${OBJS}
 
 fclean: clean
 	${RM} ${NAME}

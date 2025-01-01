@@ -6,13 +6,13 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:29:31 by sodahani          #+#    #+#             */
-/*   Updated: 2024/12/31 17:45:47 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/01 15:53:10 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_stack *stack, int i)
+void	ra(t_stack *stack, int j)
 {
 	int	temp;
 	int	i;
@@ -27,12 +27,12 @@ void	ra(t_stack *stack, int i)
 			i++;
 		}
 		stack->arr[stack->size - 1] = temp;
-		if (i == 1)
+		if (j == 1)
 			ft_printf("ra\n");
 	}
 }
 
-void	rb(t_stack *stack, int i)
+void	rb(t_stack *stack, int j)
 {
 	int	temp;
 	int	i;
@@ -47,7 +47,7 @@ void	rb(t_stack *stack, int i)
 			i++;
 		}
 		stack->arr[stack->size - 1] = temp;
-		if (i == 1)
+		if (j == 1)
 			ft_printf("rb\n");
 	}
 }
@@ -59,7 +59,7 @@ void	rr(t_stack *a, t_stack *b)
 	ft_printf("rr\n");
 }
 
-void	rra(t_stack *stack, int i)
+void	rra(t_stack *stack, int j)
 {
 	int	temp;
 	int	i;
@@ -74,12 +74,12 @@ void	rra(t_stack *stack, int i)
 			i--;
 		}
 		stack->arr[0] = temp;
-		if (i == 1)
+		if (j == 1)
 			ft_printf("rra\n");
 	}
 }
 
-void	rrb(t_stack *stack, int i)
+void	rrb(t_stack *stack, int j)
 {
 	int	temp;
 	int	i;
@@ -94,7 +94,7 @@ void	rrb(t_stack *stack, int i)
 			i--;
 		}
 		stack->arr[0] = temp;
-		if (i == 1)
+		if (j == 1)
 			ft_printf("rrb\n");
 	}
 }
