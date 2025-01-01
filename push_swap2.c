@@ -54,8 +54,8 @@ void	rb(t_stack *stack, int i)
 
 void	rr(t_stack *a, t_stack *b)
 {
-	ra(a , 0);
-	rb(b , 0);
+	ra(a, 0);
+	rb(b, 0);
 	ft_printf("rr\n");
 }
 

@@ -1,4 +1,5 @@
-SRCS = push_swap.c push_swap1.c push_swap2.c
+SRCS = push_swap.c push_swap1.c push_swap2.c ft_printf_utils.c \
+		ft_printf.c ft_split.c ft_strjoin.c 
 
 SRCSB = 
 OBJS = ${SRCS:.c=.o}

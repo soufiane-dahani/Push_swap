@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:51:08 by sodahani          #+#    #+#             */
-/*   Updated: 2024/12/31 17:35:38 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/01 12:33:08 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,56 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	new[i] = '\0';
 	return (new);
+}
+
+char	*join_av(int ac, char const **av)
+{
+	char	*result;
+	int		i;
+	char	*temp;
+
+	if (ac <= 1)
+		return (NULL);
+	result = ft_strdup(av[1]);
+	if (!result)
+		return (NULL);
+	i = 2;
+	while (i < ac)
+	{
+		temp = ft_strjoin(result, " ");
+		if (!temp)
+		{
+			free(result);
+			return (NULL);
+		}
+		result = ft_strjoin(temp, av[i]);
+		free(temp);
+		if (!result)
+			return (NULL);
+		i++;
+	}
+	return (result);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
+}
+
+int	is_number(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] != '\0')
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
