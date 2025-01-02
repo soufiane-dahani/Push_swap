@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:29:20 by sodahani          #+#    #+#             */
-/*   Updated: 2024/12/31 17:39:18 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/02 15:46:49 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	pa(t_stack *a, t_stack *b)
 			b->arr[i] = b->arr[i + 1];
 			i++;
 		}
-		a->size++;
 		b->size--;
+		a->size++;
 		ft_printf("pa\n");
 	}
 }
@@ -91,8 +91,8 @@ void	pb(t_stack *a, t_stack *b)
 			a->arr[i] = a->arr[i + 1];
 			i++;
 		}
-		b->size++;
 		a->size--;
+		b->size++;
 		ft_printf("pb\n");
 	}
 }
