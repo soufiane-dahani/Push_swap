@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:49 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/01 15:21:22 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/03 09:52:53 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_all_numbers(char **res)
 			while (res[j])
 				free(res[j++]);
 			free(res);
-			return (0);
+			exit(-1);
 		}
 		i++;
 	}

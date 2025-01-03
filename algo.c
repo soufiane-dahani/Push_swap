@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 10:11:13 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/02 17:42:40 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:08:09 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b)
 		}
 		i++;
 	}
-	function_if_else(4, min_pos, stack_a);
+	function_if_else(min_pos, stack_a);
 	pb(stack_a, stack_b);
 	sort_three(stack_a);
 	pa(stack_a, stack_b);
@@ -83,26 +83,29 @@ void	push_min_b(t_stack *stack_a, t_stack *stack_b, int j)
 		}
 		i++;
 	}
-	function_if_else(j, min_pos, stack_a);
+	function_if_else(min_pos, stack_a);
 	pb(stack_a, stack_b);
 }
 
-void	function_if_else(int j, int min_pos, t_stack *stack_a)
+void function_if_else(int min_pos, t_stack *stack_a)
 {
-	if (min_pos < 2)
-	{
-		while (min_pos != 0)
-		{
-			ra(stack_a, 1);
-			min_pos--;
-		}
-	}
-	else
-	{
-		while (min_pos != j)
-		{
-			rra(stack_a, 1);
-			min_pos++;
-		}
-	}
+    if (min_pos < (stack_a->size) / 2)
+    {
+        while (min_pos != 0)
+        {
+            ra(stack_a, 1);
+            min_pos--;
+        }
+    }
+    else
+    {
+        while (min_pos != stack_a->size)
+        {
+            rra(stack_a, 1);
+            min_pos++;
+        }
+    }
 }
+
+
+

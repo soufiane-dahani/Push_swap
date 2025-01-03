@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:04:06 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/01 15:17:28 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/03 09:46:20 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,21 @@ int	ft_atoi(const char *str)
 			return (-1);
 	}
 	return (result * sign);
+}
+int	check_duplicates(int *arr , int size)
+{
+	int i = 0;
+	int j;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return 0;
+			j++;
+		}
+		i++;
+	}
+	return 1;
 }

@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:28:34 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/02 17:47:16 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:38:55 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ void	rrr(t_stack *a, t_stack *b)
 	ft_printf("rrr\n");
 }
 
-void	sort_two(t_stack *stack)
+void	sort_two(t_stack *stack, int i)
 {
-	if (stack->size == 2 && stack->arr[0] > stack->arr[1])
+	if (stack->arr[0] > stack->arr[1] && i == 0)
 		sa(stack, 1);
+	if (stack->arr[0] < stack->arr[1] && i == 1)
+		sb(stack, 1);
 }
 
 int	setup_stack(t_stack *stack, int *numbers, int count)
@@ -44,24 +46,28 @@ int	setup_stack(t_stack *stack, int *numbers, int count)
 	return (1);
 }
 
-// int	main(int ac, char const **av)
-// {
-// 	t_stack	a;
-// 	t_stack	b;
-// 	int		*num;
+int	main(int ac, char const **av)
+{
+	t_stack	a;
+	t_stack	b;
+	int		*num;
 
-// 	num = check_number(ac, av);
-// 	if (!setup_stack(&a, num, ac - 1))
-// 		return (1);
-// 	init_stack(&b, ac - 1);
-// 	if (ft_is_sorted(&a))
-// 		return (0);
-// 	sort_four(&a, &b); // Sort the stack of 4 numbers
-// 	// Print sorted stack
-// 	for (int i = 0; i < a.size; i++)
-// 		printf("%d ", a.arr[i]);
-// 	printf("\n");
-// 	free_stack(&a);
-// 	free(num);
-// 	return (0);
-// }
+	num = check_number(ac, av);
+	if (!setup_stack(&a, num, ac - 1))
+		return (1);
+	if (!check_duplicates(num, a.size))
+	{
+		ft_printf("error duplicates");
+		exit(-1);
+	}
+	init_stack(&b, ac - 1);
+	if (ft_is_sorted(&a))
+		return (0);
+	algo(&a, &b);
+	for (int i = 0; i < a.size; i++)
+		printf("%d ", a.arr[i]);
+	printf("\n");
+	free_stack(&a);
+	free(num);
+	return (0);
+}

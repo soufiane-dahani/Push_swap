@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:34:38 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/02 17:48:07 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/03 18:04:21 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,16 @@ void	free_stack(t_stack *stack);
 int		push_stack(t_stack *stack, int value);
 int		init_stack(t_stack *stack, int capacity);
 int		ft_is_sorted(t_stack *stack);
-void	sort_two(t_stack *stack);
+void	sort_two(t_stack *stack, int i);
 void	sort_three(t_stack *stack);
 void	sort_four(t_stack *stack_a, t_stack *stack_b);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 void	push_min_b(t_stack *stack_a, t_stack *stack_b, int j);
-void	function_if_else(int j, int min_pos, t_stack *stack_a);
+void function_if_else(int min_pos, t_stack *stack_a);
+int		check_duplicates(int *arr , int size);
+void 	algo(t_stack *stack_a, t_stack *stack_b);
+void bubble_sort(int arr[], int n);
+int find_max_index(t_stack *stack);
 #endif
+
+// y9der ykon 3andi problem f capacity ;
