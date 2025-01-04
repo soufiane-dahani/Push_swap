@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:28:34 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/03 18:38:55 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:40:43 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,28 +46,54 @@ int	setup_stack(t_stack *stack, int *numbers, int count)
 	return (1);
 }
 
+static void choose_algorithm(t_stack *a, t_stack *b)
+{
+	if (a->capacity == 2)
+		sort_two(a, 0);
+	else if (a->capacity == 3)
+		sort_three(a);
+	else if (a->capacity == 4)
+		sort_four(a, b);
+	else if (a->capacity == 5)
+		sort_five(a, b);
+	else
+		algo(a, b);
+}
+
 int	main(int ac, char const **av)
 {
 	t_stack	a;
 	t_stack	b;
 	int		*num;
+	int		capacity;
 
-	num = check_number(ac, av);
-	if (!setup_stack(&a, num, ac - 1))
+	num = check_number(ac, av, &capacity);
+	if (!setup_stack(&a, num, capacity))
+	{
+		free(num);
 		return (1);
+	}
 	if (!check_duplicates(num, a.size))
 	{
 		ft_printf("error duplicates");
+		free_stack(&a);
+		free(num);
 		exit(-1);
 	}
-	init_stack(&b, ac - 1);
+	init_stack(&b, capacity);
 	if (ft_is_sorted(&a))
+	{
+		free_stack(&a);
+		free_stack(&b);
+		free(num);
 		return (0);
-	algo(&a, &b);
+	}
+	choose_algorithm(&a, &b);
 	for (int i = 0; i < a.size; i++)
-		printf("%d ", a.arr[i]);
-	printf("\n");
+		ft_printf("%d ", a.arr[i]);
+	ft_printf("\n");
 	free_stack(&a);
+	free_stack(&b);
 	free(num);
 	return (0);
 }

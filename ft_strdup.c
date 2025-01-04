@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:49 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/03 09:52:53 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:45:54 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,17 @@ int	check_all_numbers(char **res)
 	return (1);
 }
 
-int	*convert_to_integers(char **res)
+int	*convert_to_integers(char **res, int *capacity)
 {
 	int	*num;
-	int	count;
 	int	i;
+	int	count;
 
 	count = 0;
 	i = 0;
 	while (res[count])
 		count++;
+	*capacity = count;
 	num = malloc(count * sizeof(int));
 	if (!num)
 	{
@@ -85,21 +86,18 @@ int	*convert_to_integers(char **res)
 	while (i < count)
 	{
 		num[i] = ft_atoi(res[i]);
-		free(res[i]);
-		i++;
+		free(res[i++]);
 	}
 	free(res);
 	return (num);
 }
 
-int	*check_number(int ac, char const **av)
+int	*check_number(int ac, char const **av, int *capacity)
 {
 	char	*result;
 	char	**res;
 	int		*numbers;
-	int		i;
 
-	i = 0;
 	result = join_av(ac, av);
 	if (!result)
 		return (NULL);
@@ -109,6 +107,6 @@ int	*check_number(int ac, char const **av)
 		return (NULL);
 	if (!check_all_numbers(res))
 		return (NULL);
-	numbers = convert_to_integers(res);
+	numbers = convert_to_integers(res, capacity);
 	return (numbers);
 }

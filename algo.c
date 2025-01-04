@@ -87,25 +87,22 @@ void	push_min_b(t_stack *stack_a, t_stack *stack_b, int j)
 	pb(stack_a, stack_b);
 }
 
-void function_if_else(int min_pos, t_stack *stack_a)
+void	function_if_else(int min_pos, t_stack *stack_a)
 {
-    if (min_pos < (stack_a->size) / 2)
-    {
-        while (min_pos != 0)
-        {
-            ra(stack_a, 1);
-            min_pos--;
-        }
-    }
-    else
-    {
-        while (min_pos != stack_a->size)
-        {
-            rra(stack_a, 1);
-            min_pos++;
-        }
-    }
+	if (min_pos < (stack_a->size) / 2)
+	{
+		while (min_pos != 0)
+		{
+			ra(stack_a, 1);
+			min_pos--;
+		}
+	}
+	else
+	{
+		while (min_pos != stack_a->size)
+		{
+			rra(stack_a, 1);
+			min_pos++;
+		}
+	}
 }
-
-
-

@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:04:06 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/03 09:46:20 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/04 14:16:49 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,69 @@ int	ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
-int	check_duplicates(int *arr , int size)
+
+int	check_duplicates(int *arr, int size)
 {
-	int i = 0;
-	int j;
+	int	i;
+	int	j;
+
+	i = 0;
 	while (i < size)
 	{
 		j = i + 1;
 		while (j < size)
 		{
 			if (arr[i] == arr[j])
-				return 0;
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return 1;
+	return (1);
+}
+
+int	find_max_index(t_stack *stack)
+{
+	int	max;
+	int	index;
+	int	i;
+
+	i = 0;
+	max = stack->arr[0];
+	index = 0;
+	while (++i < stack->size)
+	{
+		if (stack->arr[i] > max)
+		{
+			max = stack->arr[i];
+			index = i;
+		}
+	}
+	return (index);
+}
+
+void	bubble_sort(int arr[], int n)
+{
+	int	swapped;
+	int	i;
+	int	temp;
+
+	swapped = 1;
+	while (swapped)
+	{
+		swapped = 0;
+		i = 0;
+		while (i < n - 1)
+		{
+			if (arr[i] > arr[i + 1])
+			{
+				temp = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = temp;
+				swapped = 1;
+			}
+			i++;
+		}
+		n--;
+	}
 }

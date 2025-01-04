@@ -6,111 +6,94 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:44:46 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/03 18:38:19 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:17:00 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void function_if_elsee(int min_pos, t_stack *stack_b)
+static void	function_if_elsee(int min_pos, t_stack *stack_b)
 {
-    if (min_pos < (stack_b->size) / 2)
-    {
-        while (min_pos != 0)
-        {
-            rb(stack_b, 1);
-            min_pos--;
-        }
-    }
-    else
-    {
-        while (min_pos != stack_b->size)
-        {
-            rrb(stack_b, 1);
-            min_pos++;
-        }
-    }
+	if (min_pos < (stack_b->size) / 2)
+	{
+		while (min_pos != 0)
+		{
+			rb(stack_b, 1);
+			min_pos--;
+		}
+	}
+	else
+	{
+		while (min_pos != stack_b->size)
+		{
+			rrb(stack_b, 1);
+			min_pos++;
+		}
+	}
 }
 
-void algo(t_stack *stack_a, t_stack *stack_b)
+static void	handle_initial_push(t_stack *stack_a, t_stack *stack_b,
+		t_sort_vars *vars)
 {
-    int arr[stack_a->size];
-    // int i = 0;
-    int start = 0;
-    int len = stack_a->size;
-    int end = stack_a->size / 6;
-
-    memcpy(arr, stack_a->arr, stack_a->size * sizeof(int));
-    bubble_sort(arr, stack_a->size);
-
-    while (stack_a->size != 0)
-    {
-        if (stack_a->arr[0] <= arr[start])
-        {
-            pb(stack_a, stack_b);
-            rb(stack_b, 1);
-            if (end < len - 1)
-                end++;
-            if (start < end)
-                start++;
-        }
-        else if (stack_a->arr[0] <= arr[end])
-        {
-            pb(stack_a, stack_b);
-            sort_two(stack_b, 1);
-            if (end < len - 1)
-                end++;
-            if (start < end)
-                start++;
-        }
-        else
-        {
-            ra(stack_a, 1);
-        }
-    }
-
-    while (stack_b->size != 0)
-    {
-        int index = find_max_index(stack_b);
-        function_if_elsee(index, stack_b);
-        pa(stack_a, stack_b);
-    }
+	if (stack_a->arr[0] <= vars->arr[vars->start])
+	{
+		pb(stack_a, stack_b);
+		rb(stack_b, 1);
+		if (vars->end < vars->len - 1)
+			vars->end++;
+		if (vars->start < vars->end)
+			vars->start++;
+	}
+	else if (stack_a->arr[0] <= vars->arr[vars->end])
+	{
+		pb(stack_a, stack_b);
+		sort_two(stack_b, 1);
+		if (vars->end < vars->len - 1)
+			vars->end++;
+		if (vars->start < vars->end)
+			vars->start++;
+	}
+	else
+		ra(stack_a, 1);
 }
 
-void bubble_sort(int arr[], int n)
+static void	process_stack_a(t_stack *stack_a, t_stack *stack_b, int *arr,
+		int len)
 {
-    int swapped = 1;
-    while (swapped)
-    {
-        swapped = 0;
-        int i = 0;
-        while (i < n - 1)
-        {
-            if (arr[i] > arr[i + 1])
-            {
-                int temp = arr[i];
-                arr[i] = arr[i + 1];
-                arr[i + 1] = temp;
-                swapped = 1;
-            }
-            i++;
-        }
-        n--;
-    }
+	t_sort_vars	vars;
+
+	vars.start = 0;
+	vars.end = len / ((1.0 / 40.0) * stack_a->size + 7.0 / 2.0);
+	vars.len = len;
+	vars.arr = arr;
+	while (stack_a->size != 0)
+		handle_initial_push(stack_a, stack_b, &vars);
 }
 
-int find_max_index(t_stack *stack)
+static void	process_stack_b(t_stack *stack_a, t_stack *stack_b)
 {
-    int max = stack->arr[0];
-    int index = 0;
-    for (int i = 1; i < stack->size; i++)
-    {
-        if (stack->arr[i] > max)
-        {
-            max = stack->arr[i];
-            index = i;
-        }
-    }
-    return index;
+	int	index;
+
+	while (stack_b->size != 0)
+	{
+		index = find_max_index(stack_b);
+		function_if_elsee(index, stack_b);
+		pa(stack_a, stack_b);
+	}
 }
 
+void	algo(t_stack *stack_a, t_stack *stack_b)
+{
+	int	*arr;
+	int	len;
+
+	len = stack_a->size;
+	arr = malloc(len * sizeof(int));
+	if (!arr)
+		return ;
+	ft_memcpy(arr, stack_a->arr, len * sizeof(int));
+	bubble_sort(arr, len);
+	process_stack_a(stack_a, stack_b, arr, len);
+	process_stack_b(stack_a, stack_b);
+	free(arr);
+}
