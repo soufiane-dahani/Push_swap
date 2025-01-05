@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   just_for_norm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 12:01:32 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/05 12:55:04 by sodahani         ###   ########.fr       */
+/*   Created: 2025/01/05 18:27:19 by sodahani          #+#    #+#             */
+/*   Updated: 2025/01/05 18:28:04 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "push_swap.h"
 
-void	ft_putnbr(int n, int *len);
-void	ft_putstr(const char *str, int *len);
-void	ft_putchar(char c, int *len);
-void	ft_puthex(unsigned long n, int uppercase, int *len);
-int		ft_printf(const char *format, ...);
-void	ft_putptr(void *ptr, int *len);
-#endif
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+
+	if (!dest && !src && n > 0)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dest);
+}

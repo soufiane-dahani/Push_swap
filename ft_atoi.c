@@ -6,13 +6,13 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:04:06 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/05 12:28:42 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:03:06 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int					i;
 	int					sign;
@@ -35,8 +35,6 @@ int	ft_atoi(const char *str)
 		result *= 10;
 		result += str[i] - '0';
 		i++;
-		if (result > 2147483648)
-			return (-1);
 	}
 	return (result * sign);
 }

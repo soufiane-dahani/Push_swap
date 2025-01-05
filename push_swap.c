@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:28:34 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/05 12:37:05 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:32:05 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,18 @@ int	main(int ac, char const **av)
 	int		*num;
 	int		capacity;
 
+	b = (t_stack){0};
+	if (ac == 1)
+		return (0);
 	num = check_number(ac, av, &capacity);
+	if (!num)
+	{
+		ft_printf("Error\n");
+		return (free(num), 1);
+	}
 	if (!setup_stack(&a, num, capacity) || !check_duplicates(num, a.size))
 	{
-		ft_printf("error duplicates\n");
+		ft_printf("Error\n");
 		cleanup(&a, &b, num);
 		return (1);
 	}

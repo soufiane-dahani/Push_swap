@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:49 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/05 12:28:24 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:29:01 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,6 @@ char	*ft_strdup(const char *src)
 	return (dest);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t	i;
-
-	if (!dest && !src && n > 0)
-		return (NULL);
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
-	return (dest);
-}
-
 int	check_all_numbers(char **res)
 {
 	int	i;
@@ -48,9 +33,8 @@ int	check_all_numbers(char **res)
 	i = 0;
 	while (res[i])
 	{
-		if (!is_number(res[i]))
+		if (!res[i] || !is_number(res[i]))
 		{
-			ft_printf("Error: '%s' is not a number\n", res[i]);
 			free_string_array(res);
 			return (0);
 		}
@@ -59,26 +43,37 @@ int	check_all_numbers(char **res)
 	return (1);
 }
 
-int	*convert_to_integers(char **res, int *capacity)
+static int	count_elements(char **res)
 {
-	int	*num;
 	int	count;
-	int	i;
 
 	count = 0;
-	i = 0;
 	while (res[count])
 		count++;
-	*capacity = count;
-	num = malloc(count * sizeof(int));
+	return (count);
+}
+
+int	*convert_to_integers(char **res, int *capacity)
+{
+	int		*num;
+	int		i;
+	long	tmp;
+
+	*capacity = count_elements(res);
+	num = malloc(*capacity * sizeof(int));
 	if (!num)
+		return (free_string_array(res), NULL);
+	i = 0;
+	while (i < *capacity)
 	{
-		free_string_array(res);
-		return (NULL);
-	}
-	while (i < count)
-	{
-		num[i] = ft_atoi(res[i]);
+		tmp = ft_atoi(res[i]);
+		if (tmp > INT_MAX || tmp < INT_MIN)
+		{
+			free_string_array(res);
+			free(num);
+			return (NULL);
+		}
+		num[i] = (int)tmp;
 		free(res[i]);
 		i++;
 	}
@@ -97,7 +92,7 @@ int	*check_number(int ac, char const **av, int *capacity)
 		return (NULL);
 	res = ft_split(result, ' ');
 	free(result);
-	if (!res)
+	if (!res || !*res)
 		return (NULL);
 	if (!check_all_numbers(res))
 		return (NULL);

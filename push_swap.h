@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:34:38 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/05 12:28:57 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 18:29:58 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "ft_printf.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
@@ -55,7 +53,7 @@ int		is_number(char *str);
 int		check_all_numbers(char **res);
 int		*check_number(int ac, char const **av, int *capacity);
 int		*convert_to_integers(char **res, int *capacity);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 int		setup_stack(t_stack *stack, int *numbers, int count);
 void	free_stack(t_stack *stack);
 int		push_stack(t_stack *stack, int value);
