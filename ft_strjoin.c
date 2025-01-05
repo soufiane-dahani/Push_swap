@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:51:08 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/01 12:33:08 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:32:00 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 char	*join_av(int ac, char const **av)
 {
 	char	*result;
-	int		i;
 	char	*temp;
+	int		i;
 
-	if (ac <= 1)
+	i = 2;
+	if (ac <= 1 || !av)
 		return (NULL);
 	result = ft_strdup(av[1]);
 	if (!result)
 		return (NULL);
-	i = 2;
 	while (i < ac)
 	{
 		temp = ft_strjoin(result, " ");
@@ -70,11 +70,11 @@ char	*join_av(int ac, char const **av)
 			free(result);
 			return (NULL);
 		}
-		result = ft_strjoin(temp, av[i]);
+		free(result);
+		result = ft_strjoin(temp, av[i++]);
 		free(temp);
 		if (!result)
 			return (NULL);
-		i++;
 	}
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:49 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/04 14:45:54 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:28:24 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 int	check_all_numbers(char **res)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (res[i])
@@ -52,11 +51,8 @@ int	check_all_numbers(char **res)
 		if (!is_number(res[i]))
 		{
 			ft_printf("Error: '%s' is not a number\n", res[i]);
-			j = 0;
-			while (res[j])
-				free(res[j++]);
-			free(res);
-			exit(-1);
+			free_string_array(res);
+			return (0);
 		}
 		i++;
 	}
@@ -66,8 +62,8 @@ int	check_all_numbers(char **res)
 int	*convert_to_integers(char **res, int *capacity)
 {
 	int	*num;
-	int	i;
 	int	count;
+	int	i;
 
 	count = 0;
 	i = 0;
@@ -77,16 +73,14 @@ int	*convert_to_integers(char **res, int *capacity)
 	num = malloc(count * sizeof(int));
 	if (!num)
 	{
-		while (res[i])
-			free(res[i++]);
-		free(res);
+		free_string_array(res);
 		return (NULL);
 	}
-	i = 0;
 	while (i < count)
 	{
 		num[i] = ft_atoi(res[i]);
-		free(res[i++]);
+		free(res[i]);
+		i++;
 	}
 	free(res);
 	return (num);

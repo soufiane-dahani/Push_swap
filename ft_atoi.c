@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:04:06 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/04 14:16:49 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:28:42 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,16 @@ void	bubble_sort(int arr[], int n)
 		}
 		n--;
 	}
+}
+
+void	free_string_array(char **arr)
+{
+	int	i;
+
+	i = 0;
+	if (!arr)
+		return ;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
 }

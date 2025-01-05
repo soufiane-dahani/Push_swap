@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:34:38 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/04 18:11:40 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:28:57 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		check_duplicates(int *arr, int size);
 void	algo(t_stack *stack_a, t_stack *stack_b);
 void	bubble_sort(int arr[], int n);
 int		find_max_index(t_stack *stack);
+void	free_string_array(char **arr);
 #endif
 
 // y9der ykon 3andi problem f capacity ;

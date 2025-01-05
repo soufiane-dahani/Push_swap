@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:28:34 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/04 18:40:43 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:37:05 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,7 @@ void	sort_two(t_stack *stack, int i)
 		sb(stack, 1);
 }
 
-int	setup_stack(t_stack *stack, int *numbers, int count)
-{
-	int	i;
-
-	if (!init_stack(stack, count))
-		return (0);
-	i = 0;
-	while (i < count)
-	{
-		if (!push_stack(stack, numbers[i]))
-		{
-			free_stack(stack);
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
-static void choose_algorithm(t_stack *a, t_stack *b)
+static void	choose_algorithm(t_stack *a, t_stack *b)
 {
 	if (a->capacity == 2)
 		sort_two(a, 0);
@@ -60,6 +41,16 @@ static void choose_algorithm(t_stack *a, t_stack *b)
 		algo(a, b);
 }
 
+static void	cleanup(t_stack *a, t_stack *b, int *num)
+{
+	if (a)
+		free_stack(a);
+	if (b)
+		free_stack(b);
+	if (num)
+		free(num);
+}
+
 int	main(int ac, char const **av)
 {
 	t_stack	a;
@@ -68,32 +59,15 @@ int	main(int ac, char const **av)
 	int		capacity;
 
 	num = check_number(ac, av, &capacity);
-	if (!setup_stack(&a, num, capacity))
+	if (!setup_stack(&a, num, capacity) || !check_duplicates(num, a.size))
 	{
-		free(num);
+		ft_printf("error duplicates\n");
+		cleanup(&a, &b, num);
 		return (1);
-	}
-	if (!check_duplicates(num, a.size))
-	{
-		ft_printf("error duplicates");
-		free_stack(&a);
-		free(num);
-		exit(-1);
 	}
 	init_stack(&b, capacity);
 	if (ft_is_sorted(&a))
-	{
-		free_stack(&a);
-		free_stack(&b);
-		free(num);
-		return (0);
-	}
+		return (cleanup(&a, &b, num), 0);
 	choose_algorithm(&a, &b);
-	for (int i = 0; i < a.size; i++)
-		ft_printf("%d ", a.arr[i]);
-	ft_printf("\n");
-	free_stack(&a);
-	free_stack(&b);
-	free(num);
-	return (0);
+	return (cleanup(&a, &b, num), 0);
 }

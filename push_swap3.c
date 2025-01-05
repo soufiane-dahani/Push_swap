@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/01 15:47:05 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/02 10:10:14 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 12:33:35 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,25 @@ int	ft_is_sorted(t_stack *stack)
 	{
 		if (stack->arr[i] > stack->arr[i + 1])
 			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	setup_stack(t_stack *stack, int *numbers, int count)
+{
+	int	i;
+
+	if (!init_stack(stack, count))
+		return (0);
+	i = 0;
+	while (i < count)
+	{
+		if (!push_stack(stack, numbers[i]))
+		{
+			free_stack(stack);
+			return (0);
+		}
 		i++;
 	}
 	return (1);
