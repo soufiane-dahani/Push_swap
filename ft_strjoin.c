@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:51:08 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 11:49:03 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:35:51 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,9 @@ int	is_number(char *str)
 	i = 0;
 	if (!str || !*str)
 		return (0);
-	if ((str[i] == '-' || str[i] == '+') && str[i + 1] == '\0')
-		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);

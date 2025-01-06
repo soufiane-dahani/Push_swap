@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 19:53:03 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 11:43:36 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:08:21 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	execute_rotate_command(char *line, t_stack *a, t_stack *b)
 	{
 		ft_printf("Error\n");
 		free(line);
+		free_stack(a);
+		free_stack(b);
 		exit(1);
 	}
 }
@@ -89,6 +91,8 @@ int	main(int ac, char const **av)
 		return (1);
 	}
 	init_stack(&b, capacity);
+	free(num);
 	line_by_line(&a, &b);
+	num = 0;
 	return (cleanup(&a, &b, num), 0);
 }

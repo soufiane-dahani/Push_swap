@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:38:55 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 10:39:11 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:09:28 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,16 @@ int	*check_number(int ac, char const **av, int *capacity)
 	char	*result;
 	char	**res;
 	int		*numbers;
+	int		i;
 
+	i = -1;
 	result = join_av(ac, av);
 	if (!result)
 		return (NULL);
+	while (result[++i])
+		if (result[i] == '+' || result[i] == '-')
+			if (result[i + 1] == ' ' || result[i + 1] == '\0')
+				return (free(result), NULL);
 	res = ft_split(result, ' ');
 	free(result);
 	if (!res || !*res)
