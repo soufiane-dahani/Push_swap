@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:38:01 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 14:46:57 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/06 21:11:15 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,17 @@ char	*ft_strjoin(char const *s1, char const *s2)
 static int	validate_av(int ac, char const **av)
 {
 	int	i;
+	int	j;
 
 	i = 1;
 	if (ac <= 1 || !av)
 		return (0);
 	while (i < ac)
 	{
-		if (av[i] == NULL || av[i][0] == '\0')
+		j = 0;
+		while (av[i][j] == ' ')
+			j++;
+		if (!av[i][j])
 			return (0);
 		i++;
 	}
