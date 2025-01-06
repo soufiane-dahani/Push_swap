@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 12:01:27 by sodahani          #+#    #+#             */
-/*   Updated: 2024/12/30 15:33:48 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/06 21:26:21 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putchar(char c, int *len)
 {
-	write(1, &c, 1);
+	write(2, &c, 1);
 	(*len)++;
 }
 
