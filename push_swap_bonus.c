@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 19:53:03 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 10:59:34 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/06 11:43:36 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ int	main(int ac, char const **av)
 		return (1);
 	}
 	init_stack(&b, capacity);
-	if (ft_is_sorted(&a))
-		return (cleanup(&a, &b, num), 0);
 	line_by_line(&a, &b);
 	return (cleanup(&a, &b, num), 0);
 }
