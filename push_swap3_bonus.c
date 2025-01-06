@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap3.c                                       :+:      :+:    :+:   */
+/*   push_swap3_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/01 15:47:05 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 10:41:18 by sodahani         ###   ########.fr       */
+/*   Created: 2025/01/06 10:41:01 by sodahani          #+#    #+#             */
+/*   Updated: 2025/01/06 10:41:13 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	init_stack(t_stack *stack, int capacity)
 {

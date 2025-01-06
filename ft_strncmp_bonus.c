@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   just_for_norm.c                                    :+:      :+:    :+:   */
+/*   ft_strncmp_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 18:27:19 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 10:40:27 by sodahani         ###   ########.fr       */
+/*   Created: 2024/10/23 10:51:54 by sodahani          #+#    #+#             */
+/*   Updated: 2025/01/06 09:44:25 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
-	if (!dest && !src && n > 0)
-		return (NULL);
 	i = 0;
-	while (i < n)
+	if (n == 0)
+		return (0);
+	while ((i < n) && (s1[i] || s2[i]))
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		if (s1[i] != s2[i])
+			return (((unsigned char)s1[i] - (unsigned char)s2[i]));
 		i++;
 	}
-	return (dest);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= 48 && c <= 57)
-		return (1);
 	return (0);
 }

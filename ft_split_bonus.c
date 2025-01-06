@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 15:52:17 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 10:42:22 by sodahani         ###   ########.fr       */
+/*   Created: 2025/01/06 10:42:06 by sodahani          #+#    #+#             */
+/*   Updated: 2025/01/06 10:43:03 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 static char	**free_array(char **ptr, int i)
 {

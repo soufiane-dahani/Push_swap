@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:34:38 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/05 18:29:58 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/05 20:00:25 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,3 @@ void	bubble_sort(int arr[], int n);
 int		find_max_index(t_stack *stack);
 void	free_string_array(char **arr);
 #endif
-
-// y9der ykon 3andi problem f capacity ;
