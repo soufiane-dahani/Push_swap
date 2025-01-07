@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:44:46 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/04 18:17:00 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:06:57 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	process_stack_a(t_stack *stack_a, t_stack *stack_b, int *arr,
 	t_sort_vars	vars;
 
 	vars.start = 0;
-	vars.end = len / ((1.0 / 40.0) * stack_a->size + 7.0 / 2.0);
+	vars.end = len / (0.02 * stack_a->size + 4);
 	vars.len = len;
 	vars.arr = arr;
 	while (stack_a->size != 0)
