@@ -60,7 +60,7 @@ void	execute_rotate_command(char *line, t_stack *a, t_stack *b)
 		rrr(a, b);
 	else
 	{
-		write(2,"Error\n",6);
+		write(2, "Error\n", 6);
 		free(line);
 		free_stack(a);
 		free_stack(b);
@@ -81,12 +81,12 @@ int	main(int ac, char const **av)
 	num = check_number(ac, av, &capacity);
 	if (!num)
 	{
-		write(2,"Error\n",6);
+		write(2, "Error\n", 6);
 		return (free(num), 1);
 	}
 	if (!setup_stack(&a, num, capacity) || !check_duplicates(num, a.size))
 	{
-		write(2,"Error\n",6);
+		write(2, "Error\n", 6);
 		cleanup(&a, &b, num);
 		return (1);
 	}
