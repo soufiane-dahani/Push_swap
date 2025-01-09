@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 19:53:03 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 16:08:21 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:24:24 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	execute_rotate_command(char *line, t_stack *a, t_stack *b)
 		rrr(a, b);
 	else
 	{
-		ft_printf("Error\n");
+		write(2,"Error\n",6);
 		free(line);
 		free_stack(a);
 		free_stack(b);
@@ -81,12 +81,12 @@ int	main(int ac, char const **av)
 	num = check_number(ac, av, &capacity);
 	if (!num)
 	{
-		ft_printf("Error\n");
+		write(2,"Error\n",6);
 		return (free(num), 1);
 	}
 	if (!setup_stack(&a, num, capacity) || !check_duplicates(num, a.size))
 	{
-		ft_printf("Error\n");
+		write(2,"Error\n",6);
 		cleanup(&a, &b, num);
 		return (1);
 	}
