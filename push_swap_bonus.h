@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 19:53:20 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 10:59:58 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:08:32 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void	execute_command(char *line, t_stack *a, t_stack *b);
 void	line_by_line(t_stack *a, t_stack *b);
 void	execute_single_command(char *line, t_stack *a, t_stack *b);
 void	execute_rotate_command(char *line, t_stack *a, t_stack *b);
+int		check_min_max(char **res);
 #endif

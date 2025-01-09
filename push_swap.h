@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:34:38 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/05 20:00:25 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:03:28 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ void	algo(t_stack *stack_a, t_stack *stack_b);
 void	bubble_sort(int arr[], int n);
 int		find_max_index(t_stack *stack);
 void	free_string_array(char **arr);
+int		check_min_max(char **res);
 #endif

@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:49:49 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 16:10:49 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:07:02 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,9 @@ int	*check_number(int ac, char const **av, int *capacity)
 	if (!res || !*res)
 		return (NULL);
 	if (!check_all_numbers(res))
-		return (NULL);
+		return (free_string_array(res), NULL);
+	if (!check_min_max(res))
+		return (free_string_array(res), NULL);
 	numbers = convert_to_integers(res, capacity);
 	return (numbers);
 }

@@ -6,7 +6,7 @@
 /*   By: sodahani <sodahani@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:27:19 by sodahani          #+#    #+#             */
-/*   Updated: 2025/01/06 10:40:27 by sodahani         ###   ########.fr       */
+/*   Updated: 2025/01/09 10:09:04 by sodahani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,20 @@ int	ft_isdigit(int c)
 	if (c >= 48 && c <= 57)
 		return (1);
 	return (0);
+}
+
+int	check_min_max(char **res)
+{
+	int		i;
+	long	tmp;
+
+	i = 0;
+	while (res[i])
+	{
+		tmp = ft_atoi(res[i]);
+		if (tmp > INT_MAX || tmp < INT_MIN)
+			return (0);
+		i++;
+	}
+	return (1);
 }
